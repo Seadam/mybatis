@@ -1,6 +1,10 @@
 package com.archer.mybatis;
 
+import com.archer.mybatis.entity.Shadow;
+import com.archer.mybatis.entity.Tag;
 import com.archer.mybatis.entity.User;
+import com.archer.mybatis.mapper.ShadowMapper;
+import com.archer.mybatis.mapper.TagMapper;
 import com.archer.mybatis.mapper.TestMapper;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -18,13 +22,14 @@ import java.util.List;
 class MybatisApplicationTests {
 
 	@Resource
-	private TestMapper mapper;
+	private TagMapper mapper;
 
 	@Test
 	void contextLoads() {
 		System.out.println(("----- selectAll method test ------"));
-		List<User> userList = mapper.selectList(null);
-		Assert.assertEquals(5, userList.size());
+		List<Tag> userList = mapper.selectList(null);
+		//Assert.assertEquals(5, userList.size());
+
 		userList.forEach(System.out::println);
 	}
 

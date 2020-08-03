@@ -12,10 +12,14 @@ mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+  configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 logging:
     root: info #日志配置DEBUG,INFO,WARN,ERROR
-    com.archer.mybaits: debug
-#  file: demo_log.log #配置日志生成路径
-#  path: /var/logs #配置日志文件名称
+    file:
+      name: /apps/logs/mybatis/demo_log.log #配置日志生成路径
+      #path: /var/logs #配置日志文件名称
+    level:
+      com.archer.mybatis.mapper: debug
