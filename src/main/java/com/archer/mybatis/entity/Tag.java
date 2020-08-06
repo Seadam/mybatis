@@ -1,5 +1,8 @@
 package com.archer.mybatis.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -25,6 +28,7 @@ public class Tag implements Serializable {
 
     private String description;
 
+    @TableId
     private Long latestPostId;
 
     private String name;
@@ -33,6 +37,7 @@ public class Tag implements Serializable {
 
     private String thumbnail;
 
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updated;
 
 

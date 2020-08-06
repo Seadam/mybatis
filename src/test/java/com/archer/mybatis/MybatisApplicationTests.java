@@ -1,16 +1,12 @@
 package com.archer.mybatis;
 
-import com.archer.mybatis.entity.Shadow;
 import com.archer.mybatis.entity.Tag;
-import com.archer.mybatis.entity.User;
-import com.archer.mybatis.mapper.ShadowMapper;
 import com.archer.mybatis.mapper.TagMapper;
-import com.archer.mybatis.mapper.TestMapper;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -19,6 +15,7 @@ import java.util.List;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @MapperScan("com.archer.mybatis.*")
+@ComponentScan("com.archer.mybatis.handler.*")
 class MybatisApplicationTests {
 
 	@Resource
@@ -27,10 +24,14 @@ class MybatisApplicationTests {
 	@Test
 	void contextLoads() {
 		System.out.println(("----- selectAll method test ------"));
-		List<Tag> userList = mapper.selectList(null);
+		Tag tag = mapper.selectById(10);
+		tag.setName("NIO");
+		tag.setUpdated(null);
+		mapper.updateById(tag);
+		List<Tag> tagList = mapper.selectList(null);
 		//Assert.assertEquals(5, userList.size());
 
-		userList.forEach(System.out::println);
+		tagList.forEach(System.out::println);
 	}
 
 }
